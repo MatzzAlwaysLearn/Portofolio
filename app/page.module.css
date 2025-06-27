@@ -1,10 +1,140 @@
 .introduction {
-  padding: 2rem;
-  text-align: center;
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111 60%, #222 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.introCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .h1Intro {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 2px 16px #000a;
+}
+
+.introDesc {
+  color: #e5e5e5;
+  font-size: 1.15rem;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.profileCard {
+  margin: 2rem auto 0 auto;
+  background: rgba(30,30,30,0.95);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px #fff1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 350px;
+  border: 1.5px solid #fff2;
+}
+
+.profileCard:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 40px 0 #fff2, 0 1.5px 8px #000;
+  border-color: #fff5;
+}
+
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 32px rgba(255,255,255,0.08), 0 1.5px 8px #000;
+  background: #222;
+}
+
+.profileInfo {
+  text-align: center;
+}
+
+.profileInfo h2 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.profileInfo p {
+  color: #d1d5db;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.profileLinks {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileLinks img {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(1) brightness(2);
+  transition: filter 0.2s, transform 0.2s;
+  background: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 2px 8px #0006;
+}
+
+.profileLinks img:hover {
+  filter: grayscale(0) brightness(1.2) drop-shadow(0 0 8px #fff8);
+  transform: scale(1.18) rotate(-6deg);
+  background: #222;
+}
+
+.introRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 700px) {
+  .introRow {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .profileCard {
+    padding: 1.5rem 1rem 1rem 1rem;
+    max-width: 95vw;
+  }
+  .h1Intro {
+    font-size: 2rem;
+  }
+  .introDesc {
+    font-size: 1rem;
+    max-width: 95vw;
+  }
+  .profileImage {
+    width: 90px;
+    height: 90px;
+  }
 }

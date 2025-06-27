@@ -16,17 +16,42 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <section className={`${style.introduction}`}>
-        <h1 className={`${poppins.className} ${style.h1Intro}`}>Matzz Dev</h1>
-        <p className={openSans.className}>
-          Nama saya Matzz, seorang developer pemula semi menengah yang belajar
-          di SMKN 1 Gorontalo, kelas 10. Saya memiliki keterampilan di HTML,
-          CSS, dan JavaScript, serta pengalaman dengan framework seperti React.
-          Saya aktif dalam proyek kelompok di sekolah dan percaya bahwa
-          kolaborasi adalah kunci keberhasilan. Dengan semangat untuk belajar
-          dan berkembang, saya siap menghadapi tantangan baru di dunia
-          teknologi.
-        </p>
+      <section className={style.introduction}>
+        <div className={style.introCenter}>
+          <img
+            src="/logo.jpg"
+            alt="Profile"
+            className={style.profileImage}
+          />
+          <h1 className={`${poppins.className} ${style.h1Intro}`}>Matzz Dev</h1>
+          <p className={openSans.className + " " + style.introDesc}>
+            Developer muda dari SMKN 1 Gorontalo, antusias belajar web & React.
+          </p>
+          <div className={style.profileCard}>
+            <h2 className={poppins.className}>Matzz</h2>
+            <p className={openSans.className}>
+              Frontend Developer | UI/UX Enthusiast
+            </p>
+            <div className={style.profileLinks}>
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                  alt="GitHub"
+                />
+              </a>
+              <a href="mailto:matzz@email.com">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                  alt="Email"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
