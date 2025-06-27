@@ -1,19 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 .navbar {
-  background-color: rgba(17, 17, 17, 0.9); /* Latar belakang hitam transparan */
-  color: #fff; /* Teks putih */
+  background: linear-gradient(90deg, #111 60%, #222 100%);
+  color: #fff;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.3s ease, padding 0.3s ease; /* Transisi halus untuk perubahan warna dan padding */
+  box-shadow: 0 4px 24px 0 #000b;
+  transition: background 0.3s, padding 0.3s;
+  border-bottom: 1.5px solid #222;
 }
 
 .scrolled {
-  background-color: #111; /* Latar belakang hitam solid saat scroll */
-  padding: 0.5rem 2rem; /* Padding lebih kecil saat scroll */
+  background: #111;
+  padding: 0.5rem 2rem;
+  box-shadow: 0 2px 12px 0 #000c;
 }
 
 .navbarContainer {
@@ -25,14 +27,22 @@
 }
 
 .logo {
-  font-size: 2rem; /* Ukuran font untuk logo */
-  font-weight: 700; /* Bold */
-  letter-spacing: 2px; /* Jarak antar huruf */
-  transition: color 0.3s ease; /* Transisi halus untuk hover */
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 2px 12px #000a;
+  transition: color 0.3s;
+  border-radius: 8px;
+  padding: 0.2rem 0.7rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #222;
 }
 
 .logo:hover {
-  color: #f39c12; /* Warna saat hover */
+  color: #fff;
+  background: #222;
+  border-color: #fff2;
 }
 
 .navLinks {
@@ -48,17 +58,20 @@
 }
 
 .navLinks a {
-  color: #fff; /* Teks putih */
-  text-decoration: none; /* Menghilangkan garis bawah */
+  color: #fff;
+  text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  transition: color 0.3s ease, transform 0.3s ease; /* Transisi untuk hover */
-  padding: 0.5rem 0;
+  transition: color 0.2s, transform 0.2s;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
 }
 
 .navLinks a:hover {
-  color: #f39c12; /* Warna saat hover */
-  transform: scale(1.1); /* Efek zoom saat hover */
+  color: #111;
+  background: #fff;
+  transform: scale(1.08);
 }
 
 .navLinks li::after {
@@ -66,14 +79,14 @@
   position: absolute;
   width: 0;
   height: 2px;
-  background: #f39c12; /* Garis bawah oranye */
+  background: #fff;
   bottom: 0;
   left: 0;
-  transition: width 0.3s ease;
+  transition: width 0.3s;
 }
 
 .navLinks li:hover::after {
-  width: 100%; /* Garis bawah penuh saat hover */
+  width: 100%;
 }
 
 /* Menu Button */
@@ -82,7 +95,7 @@
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   cursor: pointer;
   padding: 0.5rem;
   margin-left: 1rem;
@@ -109,16 +122,20 @@
     overflow: hidden; /* Sembunyikan overflow */
     transition: max-height 0.3s ease-out;
     gap: 0;
+    background: #111;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 32px #000b;
+    margin-top: 0.5rem;
   }
 
   .navLinks.active {
-    max-height: 300px; /* Tampilkan link saat aktif */
+    max-height: 320px; /* Tampilkan link saat aktif */
     padding: 1rem 0; /* Padding vertikal */
   }
 
   .navLinks li {
     padding: 0.5rem 1rem; /* Padding untuk link */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis bawah */
+    border-bottom: 1px solid #222; /* Garis bawah */
   }
 
   .navLinks li:last-child {
@@ -132,5 +149,6 @@
   .navLinks a {
     display: block; /* Tampilkan link sebagai block */
     width: 100%; /* Lebar penuh */
+    border-radius: 6px;
   }
 }

@@ -1,57 +1,58 @@
 .introduction {
   min-height: 100vh;
   background: linear-gradient(135deg, #111 60%, #222 100%);
+  background-color: #111;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  animation: fadeInBg 1.2s;
+}
+
+@keyframes fadeInBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .introCenter {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
+  gap: 3.5rem;
+  animation: fadeIn 1.2s;
 }
 
-.h1Intro {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  color: #fff;
-  letter-spacing: 2px;
-  font-weight: 700;
-  text-shadow: 0 2px 16px #000a;
-}
-
-.introDesc {
-  color: #e5e5e5;
-  font-size: 1.15rem;
-  margin-bottom: 2.2rem;
-  text-align: center;
+.leftIntro {
+  flex: 1 1 320px;
   max-width: 420px;
-  line-height: 1.5;
-  letter-spacing: 0.5px;
-}
-
-.profileCard {
-  margin: 2rem auto 0 auto;
-  background: rgba(30,30,30,0.95);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px #fff1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem 2.5rem 1.5rem 2.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  max-width: 350px;
-  border: 1.5px solid #fff2;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
-.profileCard:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 12px 40px 0 #fff2, 0 1.5px 8px #000;
-  border-color: #fff5;
+@media (max-width: 900px) {
+  .introCenter {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .leftIntro {
+    align-items: center;
+    text-align: center;
+    max-width: 95vw;
+  }
+}
+
+.profileImageWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profileImage {
@@ -63,13 +64,161 @@
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 32px rgba(255,255,255,0.08), 0 1.5px 8px #000;
   background: #222;
+  z-index: 2;
+  transition: box-shadow 0.3s;
 }
 
-.profileInfo {
+.profileImageWrapper:hover .profileImage {
+  box-shadow: 0 0 0 6px #fff2, 0 8px 32px #fff1;
+}
+
+.profileGlow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff2 0%, #fff0 70%);
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(2px);
+  opacity: 0.7;
+}
+
+.h1Intro {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 2px 16px #000a;
   text-align: center;
 }
 
-.profileInfo h2 {
+.nameHighlight {
+  background: linear-gradient(90deg, #fff 60%, #eee 100%);
+  color: #111;
+  padding: 0.2em 0.7em;
+  border-radius: 12px;
+  font-weight: 800;
+  box-shadow: 0 2px 12px #fff2;
+  letter-spacing: 2px;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #fff 60%, #eee 100%);
+  border-radius: 2px;
+  margin: 1.2rem 0 1.5rem 13vw;
+  opacity: 0.7;
+}
+
+.introDesc {
+  color: #e5e5e5;
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  animation: fadeIn 1.6s;
+}
+
+.skillBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin: 2.2rem auto 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.skillBadge {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid #fff3;
+  border-radius: 8px;
+  padding: 0.3em 1em;
+  font-size: 1.05rem;
+  font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  box-shadow: 0 2px 8px #0003;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  will-change: transform;
+  /* Untuk animasi wave */
+  animation: none;
+}
+
+.skillBadge:active {
+  transform: scale(0.95);
+}
+
+.skillBadge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s cubic-bezier(.4,2,.6,1), height 0.4s cubic-bezier(.4,2,.6,1);
+  z-index: -1;
+}
+
+.skillBadge:hover::after {
+  width: 180%;
+  height: 180%;
+}
+
+.skillBadge:hover {
+  color: #111;
+  border: 1px solid #fff;
+  font-weight: 800;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 16px #fff2;
+  /* animasi wave di JS/Framer Motion */
+}
+
+.profileCard {
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  max-width: 350px;
+  border-radius: 1.5rem;
+  border: 1.5px solid #fff2;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px #fff1;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
+}
+
+.glassCard {
+  background: rgba(30,30,30,0.7);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1.5px solid #fff3;
+  box-shadow: 0 8px 32px 0 #fff2, 0 1.5px 8px #000;
+}
+
+.profileCard:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 40px 0 #fff2, 0 1.5px 8px #000;
+  border-color: #fff5;
+}
+
+.profileCard h2 {
   margin: 0.5rem 0 0.25rem 0;
   font-size: 1.4rem;
   color: #fff;
@@ -77,12 +226,19 @@
   letter-spacing: 1px;
 }
 
-.profileInfo p {
+.profileCard p {
   color: #d1d5db;
   font-size: 1rem;
   margin-bottom: 1.2rem;
   text-align: center;
   letter-spacing: 0.5px;
+}
+
+.dot {
+  color: #fff;
+  font-size: 1.2em;
+  margin: 0 0.3em;
+  vertical-align: middle;
 }
 
 .profileLinks {
@@ -109,19 +265,200 @@
   background: #222;
 }
 
-.introRow {
+.profileCardModern {
+  margin: 2.5rem auto 0 auto;
+  padding: 2.2rem 2.2rem 1.7rem 2.2rem;
+  max-width: 370px;
+  width: 100%;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, rgba(30,30,30,0.85) 60%, rgba(60,60,60,0.7) 100%);
+  box-shadow: 0 8px 32px 0 #000b, 0 1.5px 8px #fff1;
+  border: 2px solid rgba(255,255,255,0.13);
+  backdrop-filter: blur(16px) saturate(160%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  animation: floatCard 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0px);}
+  100% { transform: translateY(-10px);}
+}
+
+.avatarWrapper {
+  background: linear-gradient(135deg, #fff 0%, #6366f1 100%);
+  padding: 4px;
+  border-radius: 50%;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 2px 16px #6366f155;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #222;
+  background: #222;
+  display: block;
+  /* animation handled by framer-motion */
+}
+
+.cardName {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0.2rem 0 0.3rem 0;
+  letter-spacing: 1.2px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.cardBadge {
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, #fff 60%, #eee 100%);
+  color: #111;
+  border-radius: 8px;
+  padding: 0.1em 0.5em;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #fff2;
+}
+
+.cardBio {
+  color: #d1d5db;
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.cardLocation {
+  font-size: 0.98rem;
+  color: #b3b3b3;
+  display: block;
+  margin-top: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.cardIconBtn {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid #fff2;
+  border-radius: 50%;
+  padding: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+  transition: background 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px #0003;
+  cursor: pointer;
+}
+
+.cardIconBtn img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(1) brightness(2);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.cardIconBtn:hover img {
+  filter: grayscale(0) brightness(1.2) drop-shadow(0 0 8px #6366f1aa);
+  transform: scale(1.15);
+}
+
+
+.topIntro {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topIntroRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  gap: 3.5rem;
+}
+
+.topIntroLeft {
+  flex: 1 1 420px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.topIntroRight {
+  flex: 0 0 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1.5rem; /* agar card agak turun */
+}
+
+@media (max-width: 1100px) {
+  .topIntroRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .topIntroLeft, .topIntroRight {
+    align-items: center;
+    text-align: center;
+    max-width: 95vw;
+    margin-top: 0;
+  }
+  .topIntroRight {
+    margin-top: 1.5rem;
+  }
+}
+
+.centerIntro {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.bottomIntro {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bottomIntro {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 700px) {
-  .introRow {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
   .profileCard {
     padding: 1.5rem 1rem 1rem 1rem;
     max-width: 95vw;
@@ -136,5 +473,17 @@
   .profileImage {
     width: 90px;
     height: 90px;
+  }
+  .profileGlow {
+    width: 100px;
+    height: 100px;
+  }
+  .divider {
+    width: 40px;
+    height: 2px;
+  }
+  .skillBadge {
+    font-size: 0.9rem;
+    padding: 0.2em 0.7em;
   }
 }
