@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+.navbar {
+  background-color: rgba(17, 17, 17, 0.9); /* Latar belakang hitam transparan */
+  color: #fff; /* Teks putih */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, padding 0.3s ease; /* Transisi halus untuk perubahan warna dan padding */
+}
+
+.scrolled {
+  background-color: #111; /* Latar belakang hitam solid saat scroll */
+  padding: 0.5rem 2rem; /* Padding lebih kecil saat scroll */
+}
+
+.navbarContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem; /* Ukuran font untuk logo */
+  font-weight: 700; /* Bold */
+  letter-spacing: 2px; /* Jarak antar huruf */
+  transition: color 0.3s ease; /* Transisi halus untuk hover */
+}
+
+.logo:hover {
+  color: #f39c12; /* Warna saat hover */
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li {
+  position: relative;
+}
+
+.navLinks a {
+  color: #fff; /* Teks putih */
+  text-decoration: none; /* Menghilangkan garis bawah */
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease; /* Transisi untuk hover */
+  padding: 0.5rem 0;
+}
+
+.navLinks a:hover {
+  color: #f39c12; /* Warna saat hover */
+  transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+.navLinks li::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #f39c12; /* Garis bawah oranye */
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.navLinks li:hover::after {
+  width: 100%; /* Garis bawah penuh saat hover */
+}
+
+/* Menu Button */
+.menuButton {
+  display: none; /* Sembunyikan tombol di desktop */
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.menuIcon {
+  display: block;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbarContainer {
+    flex-wrap: wrap;
+  }
+
+  .menuButton {
+    display: block; /* Tampilkan tombol di mobile */
+  }
+
+  .navLinks {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0; /* Sembunyikan link */
+    overflow: hidden; /* Sembunyikan overflow */
+    transition: max-height 0.3s ease-out;
+    gap: 0;
+  }
+
+  .navLinks.active {
+    max-height: 300px; /* Tampilkan link saat aktif */
+    padding: 1rem 0; /* Padding vertikal */
+  }
+
+  .navLinks li {
+    padding: 0.5rem 1rem; /* Padding untuk link */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis bawah */
+  }
+
+  .navLinks li:last-child {
+    border-bottom: none; /* Hilangkan garis bawah pada item terakhir */
+  }
+
+  .navLinks li::after {
+    display: none; /* Hilangkan garis bawah di mobile */
+  }
+
+  .navLinks a {
+    display: block; /* Tampilkan link sebagai block */
+    width: 100%; /* Lebar penuh */
+  }
+}
