@@ -212,8 +212,7 @@ export default function Page() {
 }
 
 // Footer with GSAP + framer-motion animation
-// Ganti icon dengan SVG inline agar tidak perlu react-icons
-function Footer() {
+export function Footer() {
   const footerRef = useRef(null);
 
   useEffect(() => {
