@@ -261,7 +261,7 @@ function Footer() {
           transition={{ delay: 0.5, duration: 0.7, type: "spring" }}
         >
           <a
-            href="https://github.com/"
+            href="https://github.com/MatzzAlwaysLearn"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
