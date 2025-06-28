@@ -11,8 +11,12 @@
 }
 
 @keyframes fadeInBg {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .introCenter {
@@ -62,7 +66,7 @@
   object-fit: cover;
   border: 4px solid #fff;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 32px rgba(255,255,255,0.08), 0 1.5px 8px #000;
+  box-shadow: 0 4px 32px rgba(255, 255, 255, 0.08), 0 1.5px 8px #000;
   background: #222;
   z-index: 2;
   transition: box-shadow 0.3s;
@@ -89,12 +93,15 @@
 
 .h1Intro {
   font-size: 2.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.7rem; /* tambah jarak ke bawah */
   color: #fff;
   letter-spacing: 2px;
   font-weight: 700;
   text-shadow: 0 2px 16px #000a;
   text-align: center;
+  position: relative;
+  left: 9vh;
+  margin-top: 3.5rem;
 }
 
 .nameHighlight {
@@ -107,87 +114,25 @@
   letter-spacing: 2px;
 }
 
-.divider {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #fff 60%, #eee 100%);
-  border-radius: 2px;
-  margin: 1.2rem 0 1.5rem 13vw;
-  opacity: 0.7;
+.divider,
+.skillSection,
+.skillsTitle,
+.skillsHr,
+.skillBadges,
+.skillBadge {
+  display: none !important;
 }
 
 .introDesc {
   color: #e5e5e5;
   font-size: 1.15rem;
   margin-bottom: 1.2rem;
+  margin-top: 1.7rem; /* tambah jarak dari nama */
   text-align: center;
   max-width: 420px;
   line-height: 1.5;
   letter-spacing: 0.5px;
   animation: fadeIn 1.6s;
-}
-
-.skillBadges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  justify-content: center;
-  margin: 2.2rem auto 0 auto;
-  width: 100%;
-  max-width: 600px;
-}
-
-.skillBadge {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  border: 1px solid #fff3;
-  border-radius: 8px;
-  padding: 0.3em 1em;
-  font-size: 1.05rem;
-  font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  box-shadow: 0 2px 8px #0003;
-  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  will-change: transform;
-  /* Untuk animasi wave */
-  animation: none;
-}
-
-.skillBadge:active {
-  transform: scale(0.95);
-}
-
-.skillBadge::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255,255,255,0.18);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s cubic-bezier(.4,2,.6,1), height 0.4s cubic-bezier(.4,2,.6,1);
-  z-index: -1;
-}
-
-.skillBadge:hover::after {
-  width: 180%;
-  height: 180%;
-}
-
-.skillBadge:hover {
-  color: #111;
-  border: 1px solid #fff;
-  font-weight: 800;
-  letter-spacing: 2px;
-  box-shadow: 0 4px 16px #fff2;
-  /* animasi wave di JS/Framer Motion */
 }
 
 .profileCard {
@@ -199,14 +144,14 @@
   max-width: 350px;
   border-radius: 1.5rem;
   border: 1.5px solid #fff2;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px #fff1;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 0 1.5px 8px #fff1;
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
   z-index: 2;
 }
 
 .glassCard {
-  background: rgba(30,30,30,0.7);
+  background: rgba(30, 30, 30, 0.7);
   backdrop-filter: blur(12px) saturate(140%);
   border: 1.5px solid #fff3;
   box-shadow: 0 8px 32px 0 #fff2, 0 1.5px 8px #000;
@@ -271,9 +216,13 @@
   max-width: 370px;
   width: 100%;
   border-radius: 2rem;
-  background: linear-gradient(135deg, rgba(30,30,30,0.85) 60%, rgba(60,60,60,0.7) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 30, 30, 0.85) 60%,
+    rgba(60, 60, 60, 0.7) 100%
+  );
   box-shadow: 0 8px 32px 0 #000b, 0 1.5px 8px #fff1;
-  border: 2px solid rgba(255,255,255,0.13);
+  border: 2px solid rgba(255, 255, 255, 0.13);
   backdrop-filter: blur(16px) saturate(160%);
   display: flex;
   flex-direction: column;
@@ -284,8 +233,12 @@
 }
 
 @keyframes floatCard {
-  0% { transform: translateY(0px);}
-  100% { transform: translateY(-10px);}
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
 .avatarWrapper {
@@ -317,7 +270,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
 }
 
 .cardBadge {
@@ -356,7 +309,7 @@
 }
 
 .cardIconBtn {
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
   border: 1.5px solid #fff2;
   border-radius: 50%;
   padding: 7px;
@@ -380,7 +333,6 @@
   transform: scale(1.15);
 }
 
-
 .topIntro {
   width: 100%;
   max-width: 900px;
@@ -398,6 +350,7 @@
   width: 100%;
   max-width: 1100px;
   gap: 3.5rem;
+  margin: 0 auto;
 }
 
 .topIntroLeft {
@@ -416,7 +369,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 1.5rem; /* agar card agak turun */
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 1100px) {
@@ -424,11 +377,13 @@
     flex-direction: column;
     align-items: center;
     gap: 2.5rem;
+    max-width: 98vw;
   }
-  .topIntroLeft, .topIntroRight {
+  .topIntroLeft,
+  .topIntroRight {
     align-items: center;
     text-align: center;
-    max-width: 95vw;
+    max-width: 98vw;
     margin-top: 0;
   }
   .topIntroRight {
@@ -436,54 +391,226 @@
   }
 }
 
-.centerIntro {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.bottomIntro {
-  display: none;
-}
-
 @media (max-width: 900px) {
-  .bottomIntro {
+  .topIntroRow {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0 2vw;
+  }
+  .topIntroLeft,
+  .topIntroRight {
+    max-width: 100vw;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+    padding: 0 2vw;
+  }
+  .profileCardModern {
+    margin: 1.5rem auto 0 auto;
+    max-width: 95vw;
+    width: 100%;
+  }
+  .h1Intro {
+    font-size: 2.1rem;
+    margin-top: 2.5rem;
   }
 }
 
 @media (max-width: 700px) {
-  .profileCard {
-    padding: 1.5rem 1rem 1rem 1rem;
-    max-width: 95vw;
+  .topIntroRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0 1vw;
+  }
+  .topIntroLeft,
+  .topIntroRight {
+    max-width: 100vw;
+    width: 100%;
+    padding: 0 1vw;
+  }
+  .profileCardModern {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    max-width: 99vw;
+    width: 100%;
   }
   .h1Intro {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
   }
   .introDesc {
-    font-size: 1rem;
-    max-width: 95vw;
+    font-size: 0.98rem;
+    max-width: 98vw;
   }
-  .profileImage {
-    width: 90px;
-    height: 90px;
-  }
-  .profileGlow {
-    width: 100px;
-    height: 100px;
-  }
-  .divider {
-    width: 40px;
-    height: 2px;
-  }
-  .skillBadge {
-    font-size: 0.9rem;
-    padding: 0.2em 0.7em;
-  }
+}
+
+/* FOOTER STYLES */
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #18181b 60%, #23232b 100%);
+  color: #fff;
+  padding: 2.2rem 0 1.2rem 0;
+  margin-top: 0; /* hilangkan jarak atas agar tersambung */
+  box-shadow: 0 0 32px #6366f133;
+  border-top: 1.5px solid #23232b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.footerContent {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.footerBrand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 8px #6366f1aa;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.footerLinks a {
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+  opacity: 0.85;
+}
+
+.footerLinks a:hover {
+  color: #6366f1;
+  transform: scale(1.18) rotate(-8deg);
+  opacity: 1;
+}
+
+.footerCopyright {
+  font-size: 0.98rem;
+  color: #b3b3b3;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.footerLinks a:hover {
+  color: #6366f1;
+  transform: scale(1.18) rotate(-8deg);
+  opacity: 1;
+}
+
+.footerCopyright {
+  font-size: 0.98rem;
+  color: #b3b3b3;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.skillBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem 1.7rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0.7rem auto 0 auto;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 1vw;
+  position: relative;
+  left: 65vh;
+  transform: translateX(-50%);
+}
+
+/* FOOTER STYLES */
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #18181b 60%, #23232b 100%);
+  color: #fff;
+  padding: 2.2rem 0 1.2rem 0;
+  margin-top: 0; /* hilangkan jarak atas agar tersambung */
+  box-shadow: 0 0 32px #6366f133;
+  border-top: 1.5px solid #23232b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.footerContent {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.footerBrand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 8px #6366f1aa;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.footerLinks a {
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+  opacity: 0.85;
+}
+
+.footerLinks a:hover {
+  color: #6366f1;
+  transform: scale(1.18) rotate(-8deg);
+  opacity: 1;
+}
+
+.footerCopyright {
+  font-size: 0.98rem;
+  color: #b3b3b3;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.footerLinks a:hover {
+  color: #6366f1;
+  transform: scale(1.18) rotate(-8deg);
+  opacity: 1;
+}
+
+.footerCopyright {
+  font-size: 0.98rem;
+  color: #b3b3b3;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+  text-align: center;
 }
