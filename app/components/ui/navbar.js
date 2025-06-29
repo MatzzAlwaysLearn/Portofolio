@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Roboto } from "next/font/google";
 import styles from "../style/navbar.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -64,7 +66,7 @@ const linkVariants = {
 };
 
 const navLinks = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
   { label: "Project", href: "/project" },
   { label: "Contact", href: "#contact" },
@@ -74,6 +76,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => setIsOpen((v) => !v);
 
@@ -186,9 +189,21 @@ export default function Navbar() {
                   animate="visible"
                   exit="hidden"
                 >
-                  <a href={link.href} onClick={() => setIsOpen(false)}>
+                  <Link
+                    href={link.href}
+                    scroll={false}
+                    onClick={(e) => {
+                      if (link.href.startsWith("/")) {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        router.push(link.href, { scroll: false });
+                      } else {
+                        setIsOpen(false);
+                      }
+                    }}
+                  >
                     {link.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>

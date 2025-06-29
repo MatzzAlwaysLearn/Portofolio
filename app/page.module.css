@@ -101,7 +101,7 @@
   text-align: center;
   position: relative;
   left: 9vh;
-  margin-top: 3.5rem;
+  margin-top: 9rem;
 }
 
 .nameHighlight {
@@ -127,7 +127,7 @@
   color: #e5e5e5;
   font-size: 1.15rem;
   margin-bottom: 1.2rem;
-  margin-top: 1.7rem; /* tambah jarak dari nama */
+  margin-top: 1.5rem;
   text-align: center;
   max-width: 420px;
   line-height: 1.5;

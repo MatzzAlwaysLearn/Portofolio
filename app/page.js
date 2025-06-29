@@ -100,13 +100,8 @@ export default function Page() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5, type: "spring" }}
             >
-              Saya adalah Matzz, seorang developer muda yang sedang menempuh
-              pendidikan di <b>SMKN 1 Gorontalo</b>. Saya sangat antusias dalam
-              membangun website modern, mengutamakan desain yang kreatif,
-              pengalaman pengguna yang baik, dan kolaborasi tim. Saya percaya
-              bahwa teknologi adalah jalan untuk berkembang dan berinovasi, dan
-              saya selalu bersemangat untuk mempelajari hal-hal baru di dunia
-              pemrograman.
+              "Success is not final, failure is not fatal: It is the courage to continue that counts."
+              <br />- Winston S. Churchill
             </motion.p>
           </div>
           <div className={style.topIntroRight}>

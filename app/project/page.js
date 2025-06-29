@@ -266,14 +266,10 @@ export default function Page() {
                   stiffness: 120,
                 }}
                 whileHover={{
-                  scale: 1.04,
-                  background: "linear-gradient(90deg, #00eaff 60%, #eee 100%)",
-                  color: "#23242a"
+                  scale: 1.04
                 }}
                 whileTap={{
-                  scale: 0.98,
-                  background: "linear-gradient(90deg, #fff 60%, #eee 100%)",
-                  color: "#222"
+                  scale: 0.98
                 }}
               >
                 View Project
@@ -286,6 +282,12 @@ export default function Page() {
                   delay: 0.21 * index,
                   type: "spring",
                   stiffness: 120,
+                }}
+                whileHover={{
+                  scale: 1.08
+                }}
+                whileTap={{
+                  scale: 0.97
                 }}
               >
                 Framework: {project.framework}
@@ -305,16 +307,10 @@ export default function Page() {
                     key={tagIndex}
                     className={style.projectTag}
                     whileHover={{
-                      scale: 1.1,
-                      background: "#00eaff",
-                      color: "#23242a",
-                      transition: { duration: 0.15 }
+                      scale: 1.13
                     }}
                     whileTap={{
-                      scale: 1,
-                      background: "linear-gradient(90deg, #fff 60%, #eee 100%)",
-                      color: "#222",
-                      transition: { duration: 0.15 }
+                      scale: 1
                     }}
                   >
                     {tag}

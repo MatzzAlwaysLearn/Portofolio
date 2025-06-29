@@ -135,6 +135,13 @@
   font-size: 0.98rem;
   margin-bottom: 0.5rem;
   z-index: 3;
+  transition: transform 0.2s;
+}
+
+.projectFramework:hover {
+  /* Hanya scale, tidak ada perubahan warna */
+  color: #bbb;
+  background: transparent;
 }
 
 .projectTags {
@@ -154,12 +161,13 @@
   font-size: 0.93rem;
   font-weight: 600;
   box-shadow: 0 1px 6px #fff3;
-  transition: background 0.2s, color 0.2s;
+  transition: transform 0.2s;
 }
 
 .projectTag:hover {
-  background: #222;
-  color: #fff;
+  /* Hanya scale, tidak ada perubahan warna */
+  background: linear-gradient(90deg, #fff 60%, #eee 100%);
+  color: #222;
 }
 
 .projectLink {
