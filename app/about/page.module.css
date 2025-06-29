@@ -1,0 +1,32 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #111 60%, #222 100%);
+}
+
+.mainWrapper {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+}
+
+#h1Page {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.pageText {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}

@@ -67,9 +67,8 @@ const linkVariants = {
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#about" },
-  { label: "Project", href: "/project" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Project", href: "/project" }
 ];
 
 export default function Navbar() {
