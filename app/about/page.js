@@ -1,8 +1,11 @@
+'use client';
+
 import style from './page.module.css';
 import Navbar from '../components/ui/navbar.js';
 import { Footer } from '../page.js';
 import { Poppins } from 'next/font/google';
 import ScrollVelocity from '../components/ui/ScrollVelocity';
+import { useState, useEffect } from "react";
 
 
 // skils set from expert, advanced, intermediate, and beginner
@@ -18,6 +21,37 @@ const poppins = Poppins({
 })
 
 export default function Page() {
+    // Testimoni logic
+    const [testimoni, setTestimoni] = useState([]);
+    const [form, setForm] = useState({ name: "", message: "" });
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetch("/api/testimoni")
+            .then((res) => res.json())
+            .then((data) => setTestimoni(data || []));
+    }, []);
+
+    function handleChange(e) {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!form.name.trim() || !form.message.trim()) return;
+        setLoading(true);
+        await fetch("/api/testimoni", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+        });
+        setForm({ name: "", message: "" });
+        setLoading(false);
+        fetch("/api/testimoni")
+            .then((res) => res.json())
+            .then((data) => setTestimoni(data || []));
+    }
+
     return(
         <div className={style.pageContainer}>
           <Navbar />
@@ -64,7 +98,7 @@ export default function Page() {
                 </li>
                 <li>
                   Tailwind CSS
-                  <span className={style.skillLevel + " " + style.advanced}>Beginner</span>
+                  <span className={style.skillLevel + " " + style.beginner}>Beginner</span>
                 </li>
               </ul>
             </section>
@@ -92,6 +126,48 @@ export default function Page() {
                 <li>Open for freelance & collaboration</li>
                 <li>Languages: Bahasa Indonesia, English</li>
               </ul>
+            </section>
+            <section className={style.testimoniSection}>
+              <h2 className={style.testimoniTitle}>Testimoni</h2>
+              <div className={style.testimoniList}>
+                {testimoni.length === 0 && (
+                  <div className={style.testimoniEmpty}>Belum ada testimoni.</div>
+                )}
+                {testimoni.map((t, i) => (
+                  <div className={style.testimoniCard} key={i}>
+                    <div className={style.testimoniName}>{t.name}</div>
+                    <div className={style.testimoniMsg}>{t.message}</div>
+                  </div>
+                ))}
+              </div>
+              <form className={style.testimoniForm} onSubmit={handleSubmit}>
+                <input
+                  className={style.testimoniInput}
+                  name="name"
+                  placeholder="Nama"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+                <textarea
+                  className={style.testimoniInput}
+                  name="message"
+                  placeholder="Tulis testimoni kamu..."
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  rows={3}
+                  disabled={loading}
+                />
+                <button
+                  className={style.testimoniBtn}
+                  type="submit"
+                  disabled={loading}
+                >
+                  {loading ? "Mengirim..." : "Kirim Testimoni"}
+                </button>
+              </form>
             </section>
           </div>
           <Footer />         
