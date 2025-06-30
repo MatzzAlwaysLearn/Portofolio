@@ -20,8 +20,9 @@ export async function POST(request) {
   if (!name || !message) {
     return new Response(JSON.stringify({ error: "Invalid" }), { status: 400 });
   }
+  // Hapus field "date" dari insert, biarkan Supabase mengisi otomatis jika ada default value
   const { error } = await supabase.from('testimoni').insert([
-    { name, message, date: new Date().toISOString() }
+    { name, message }
   ]);
   if (error) {
     console.error("Supabase POST error:", error.message);
