@@ -22,7 +22,7 @@ const projectsArray = [
     description: "Portofolio Muhammad Fatahilla",
     image: '/portofolio.jpeg',
     imageUrl: null,
-    link: "https://example.com",
+    link: "https://portofolio-omega-five-35.vercel.app",
     framework: "Next JS",
     tags: ["JavaScript", "CSS", "HTML"],
   }
