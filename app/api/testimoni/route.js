@@ -1,8 +1,8 @@
-import { promises as fs } from "fs";
-import path from "path";
+import testimoni from '../../../data/testimoni.json';
 
-const filePath = path.join(process.cwd(), "data", "testimoni.json");
-
+export async function GET(req) {
+  return Response.json(testimoni);
+}
 async function ensureFile() {
   try {
     await fs.access(filePath);
