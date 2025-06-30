@@ -6,7 +6,7 @@ import { Footer } from '../page.js';
 import { Poppins } from 'next/font/google';
 import ScrollVelocity from '../components/ui/ScrollVelocity';
 import { useState, useEffect } from "react";
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient.js';
 
 
 // skils set from expert, advanced, intermediate, and beginner
