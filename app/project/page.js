@@ -137,7 +137,12 @@ export default function Page() {
     async function fetchProjects() {
       setLoading(true);
       const { data, error } = await supabase.from("projects").select("*").order("id", { ascending: true });
-      if (!error) setProjectsArray(data || []);
+      if (error) {
+        console.error("Supabase error:", error.message);
+        setProjectsArray([]);
+      } else {
+        setProjectsArray(data || []);
+      }
       setLoading(false);
     }
     fetchProjects();
