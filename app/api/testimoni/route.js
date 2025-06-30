@@ -8,6 +8,7 @@ export async function GET() {
     .order('date', { ascending: false });
 
   if (error) {
+    console.error("Supabase GET error:", error.message);
     return new Response(JSON.stringify([]), { status: 200 });
   }
   return new Response(JSON.stringify(data), { status: 200 });
@@ -23,6 +24,7 @@ export async function POST(request) {
     { name, message, date: new Date().toISOString() }
   ]);
   if (error) {
+    console.error("Supabase POST error:", error.message);
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
   return new Response(JSON.stringify({ ok: true }), { status: 201 });
