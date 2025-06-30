@@ -5,6 +5,7 @@ import style from "./page.module.css";
 import Navbar from "./components/ui/navbar.js";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import Image from "next/image";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -100,7 +101,7 @@ export default function Page() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5, type: "spring" }}
             >
-              "Success is not final, failure is not fatal: It is the courage to continue that counts."
+              &quot;Success is not final, failure is not fatal: It is the courage to continue that counts.&quot;
               <br />- Winston S. Churchill
             </motion.p>
           </div>
@@ -117,23 +118,13 @@ export default function Page() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.5, type: "spring" }}
               >
-                <motion.img
+                <Image
                   src="/logo.jpg"
                   alt="Profile"
                   className={style.avatar}
-                  animate={{
-                    filter: [
-                      "drop-shadow(0 0 0 #6366f1aa)",
-                      "drop-shadow(0 0 16px #6366f1aa)",
-                      "drop-shadow(0 0 0 #6366f1aa)",
-                    ],
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    duration: 2.5,
-                    ease: "easeInOut",
-                  }}
+                  width={120}
+                  height={120}
+                  style={{ borderRadius: "50%", objectFit: "cover" }}
                 />
               </motion.div>
               <motion.h2
@@ -175,9 +166,11 @@ export default function Page() {
                   whileTap={{ scale: 0.95 }}
                   className={style.cardIconBtn}
                 >
-                  <img
+                  <Image
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
                     alt="GitHub"
+                    width={32}
+                    height={32}
                   />
                 </motion.a>
                 <motion.a
@@ -191,9 +184,11 @@ export default function Page() {
                   whileTap={{ scale: 0.95 }}
                   className={style.cardIconBtn}
                 >
-                  <img
+                  <Image
                     src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
                     alt="Email"
+                    width={32}
+                    height={32}
                   />
                 </motion.a>
               </motion.div>
