@@ -5,9 +5,10 @@ import { Footer } from "../page.js";
 import style from "./page.module.css";
 import { Poppins } from "next/font/google";
 import { motion, useAnimation } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { supabase } from "../../lib/supabaseClient";
 
 const poppins = Poppins({
   weight: [
@@ -15,18 +16,6 @@ const poppins = Poppins({
   ],
   subsets: ["latin"],
 });
-
-const projectsArray = [
-  {
-    title: "Portofolio",
-    description: "Portofolio Muhammad Fatahilla",
-    image: '/portofolio.jpeg',
-    imageUrl: null,
-    link: "https://portofolio-omega-five-35.vercel.app",
-    framework: "Next JS",
-    tags: ["JavaScript", "CSS", "HTML"],
-  }
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -140,6 +129,38 @@ function AnimatedProjectCard({ children, index, ...props }) {
 }
 
 export default function Page() {
+  const [projectsArray, setProjectsArray] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let subscription;
+    async function fetchProjects() {
+      setLoading(true);
+      const { data, error } = await supabase.from("projects").select("*").order("id", { ascending: true });
+      if (!error) setProjectsArray(data || []);
+      setLoading(false);
+    }
+    fetchProjects();
+
+    // Enable realtime
+    subscription = supabase
+      .channel('public:projects')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'projects' },
+        (payload) => {
+          // Refetch data on any change
+          fetchProjects();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      // Unsubscribe on cleanup
+      if (subscription) supabase.removeChannel(subscription);
+    };
+  }, []);
+
   return (
     <div className={`${style.pageContainer} ${poppins.className}`}>
       <div className={style.mainContent}>
@@ -151,7 +172,9 @@ export default function Page() {
           initial="hidden"
           animate="show"
         >
-          {(Array.isArray(projectsArray) && projectsArray.length > 0) ? (
+          {loading ? (
+            <div>Loading...</div>
+          ) : (Array.isArray(projectsArray) && projectsArray.length > 0) ? (
             projectsArray.map((project, index) => (
               <AnimatedProjectCard
                 key={index}
