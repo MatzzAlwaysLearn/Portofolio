@@ -1,38 +1,29 @@
-import testimoni from '../../../data/testimoni.json';
+import { supabase } from '../../../lib/supabaseClient';
 
-export async function GET(req) {
-  return Response.json(testimoni);
-}
-async function ensureFile() {
-  try {
-    await fs.access(filePath);
-  } catch {
-    await fs.mkdir(path.dirname(filePath), { recursive: true });
-    await fs.writeFile(filePath, "[]");
-  }
-}
-
+// GET: Ambil semua testimoni dari Supabase
 export async function GET() {
-  await ensureFile();
-  try {
-    const data = await fs.readFile(filePath, "utf-8");
-    return new Response(data, { status: 200 });
-  } catch {
-    return new Response("[]", { status: 200 });
+  const { data, error } = await supabase
+    .from('testimoni')
+    .select('*')
+    .order('date', { ascending: false });
+
+  if (error) {
+    return new Response(JSON.stringify([]), { status: 200 });
   }
+  return new Response(JSON.stringify(data), { status: 200 });
 }
 
+// POST: Tambah testimoni ke Supabase
 export async function POST(request) {
-  await ensureFile();
   const { name, message } = await request.json();
   if (!name || !message) {
     return new Response(JSON.stringify({ error: "Invalid" }), { status: 400 });
   }
-  let data = [];
-  try {
-    data = JSON.parse(await fs.readFile(filePath, "utf-8"));
-  } catch {}
-  data.unshift({ name, message, date: new Date().toISOString() });
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  const { error } = await supabase.from('testimoni').insert([
+    { name, message, date: new Date().toISOString() }
+  ]);
+  if (error) {
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+  }
   return new Response(JSON.stringify({ ok: true }), { status: 201 });
 }

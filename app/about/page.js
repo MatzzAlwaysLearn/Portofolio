@@ -6,6 +6,7 @@ import { Footer } from '../page.js';
 import { Poppins } from 'next/font/google';
 import ScrollVelocity from '../components/ui/ScrollVelocity';
 import { useState, useEffect } from "react";
+import { supabase } from '../lib/supabaseClient';
 
 
 // skils set from expert, advanced, intermediate, and beginner
@@ -27,9 +28,28 @@ export default function Page() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        // Fetch awal
         fetch("/api/testimoni")
             .then((res) => res.json())
             .then((data) => setTestimoni(data || []));
+
+        // Enable realtime
+        const channel = supabase
+            .channel('public:testimoni')
+            .on(
+                'postgres_changes',
+                { event: '*', schema: 'public', table: 'testimoni' },
+                () => {
+                    fetch("/api/testimoni")
+                        .then((res) => res.json())
+                        .then((data) => setTestimoni(data || []));
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
     }, []);
 
     function handleChange(e) {
