@@ -22,9 +22,18 @@ const projectsArray = [
     description: "Portofolio Muhammad Fatahilla",
     image: '/portofolio.jpeg',
     imageUrl: null,
-    link: "https://example.com",
+    link: "https://matzzdev.hoststore.my.id",
     framework: "Next JS",
     tags: ["JavaScript", "CSS", "HTML"],
+  },
+  {
+    title: "Nebula",
+    description: "Sebuah module wrapper dari whiskeysockets/baileys yang membantu mempermudah pembuatan bot wa",
+    image: '/IMG_20250703_021237.png',
+    imageUrl: null,
+    link: "https://npmjs.com/@matzzdev/nebula",
+    framework: "NodeJS",
+    tags: ["Javascript", "@Whiskeysockets/Baileys"],
   }
 ];
 
